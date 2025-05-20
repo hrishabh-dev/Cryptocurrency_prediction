@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Cryptocurrency Liquidity Prediction</title>
+</head>
+<body>
+    <h1><center>Cryptocurrency Levels Prediction</center></h1>
+
+    <form action="/predict" method="post">
+        <div id="box">
+            <h2><center>Enter Details</center></h2>
+            
+            <label for="24h_volume">24h Volume</label>
+            <input type="number" step="any" id="24h_volume" name="24h_volume" required />
+
+            <label for="mkt_cap">Market Capital</label>
+            <input type="number" step="any" id="mkt_cap" name="mkt_cap" required />
+
+            <label for="1h">1h Change</label>
+            <input type="number" step="any" id="1h" name="1h" required />
+
+            <label for="price">Current Price</label>
+            <input type="number" step="any" id="price" name="price" required />
+        </div>
+        <div class="btn">
+            <button id="bt" type="submit">Submit</button>
+        </div>
+    </form>
+    {% if prediction_text %}
+        <h3 style="text-align:center;">{{ prediction_text }}</h3>
+    {% endif %}
+    {% if liquidity_level %}
+        <p style="text-align:center;">{{ liquidity_level }}</p>
+    {% endif %}
+</body>
+</html>
