@@ -6,6 +6,23 @@ Welcome to the Cryptocurrency Liquidity Prediction project! This notebook demons
 
 The goal of this project is to predict the liquidity of cryptocurrencies based on relevant market data. Liquidity is a crucial factor in cryptocurrency trading, and being able to predict it can be valuable for various applications. We employ a Random Forest Regressor model for this task, leveraging its ability to handle complex relationships within the data.
 
+## Project Structure
+
+```
+crypto-prediction/
+├── data/               # Raw and processed data files
+├── notebooks/          # Jupyter notebooks for exploration and prototyping
+├── src/                # Source code for model, training, and utilities
+│   ├── __init__.py
+│   ├── data_loader.py
+│   ├── model.py
+│   └── train.py
+├── tests/              # Unit and integration tests
+├── requirements.txt    # Python dependencies
+├── README.md           # Project overview and setup instructions
+└── .gitignore
+```
+
 ## 📊 Data Exploration and Cleaning (EDA)
 
 Our journey begins with a thorough exploration of the dataset. The data is loaded from a CSV file (`data_with_liquidity.csv`) and contains information about various cryptocurrencies, including:
