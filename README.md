@@ -1,10 +1,20 @@
 # 📈 Cryptocurrency Liquidity Prediction Project
 
-Welcome to the Cryptocurrency Liquidity Prediction project! This notebook demonstrates the process of building a machine learning model to predict the liquidity of various cryptocurrencies. We cover everything from initial data exploration and cleaning to model training, tuning, and making predictions.
+Welcome to the Cryptocurrency Liquidity Prediction project! This notebook demonstrates the process of building a machine learning model to predict the liquidity of various cryptocurrencies. We cover everything from data cleaning to model evaluation and deployment.
 
 ## ✨ Project Overview
 
-The goal of this project is to predict the liquidity of cryptocurrencies based on relevant market data. Liquidity is a crucial factor in cryptocurrency trading, and being able to predict it can be valuable for various applications. We employ a Random Forest Regressor model for this task, leveraging its ability to handle complex relationships within the data.
+The goal of this project is to predict the liquidity of cryptocurrencies based on relevant market data. Liquidity is a crucial factor in cryptocurrency trading, and being able to predict it can be valuable for traders, investors, and exchanges.
+
+---
+
+## 🖼️ Demo
+
+Below is a screenshot of the web interface where users can input cryptocurrency details to get liquidity predictions:
+
+![Cryptocurrency Levels Prediction Screenshot](image1)
+
+---
 
 ## Project Structure
 
@@ -22,14 +32,17 @@ Cryptocurrency_prediction/
 │   └── style.css
 ├── templates/
 │   └── index.html
-├── app.py
-├── liquidity_scaler.pkl
-├── tuned_liquidity_model.pkl
-├── requirements.txt
+├── app.py                      # Main Flask application
+├── liquidity_scaler.pkl        # Saved StandardScaler
+├── tuned_liquidity_model.pkl   # Saved trained model
+├── requirements.txt            # Python dependencies
 ├── README.md
 ├── LICENSE
-├── venv/                  # (Python virtual environment — usually not versioned)
+├── .gitignore                  # Ignore venv/ and other unnecessary files
+├── venv/                       # Python virtual environment (should be in .gitignore)
 ```
+
+---
 
 ## 📊 Data Exploration and Cleaning (EDA)
 
@@ -52,11 +65,11 @@ During the EDA phase, we perform the following steps:
 
 **Data Cleaning:**
 
-We perform a crucial data cleaning step by removing columns that are not intended to be used as features for the model. We identified 'coin', 'symbol', and 'date' as unnecessary for our prediction task and removed them to focus on numerical features relevant for prediction.
+We perform a crucial data cleaning step by removing columns that are not intended to be used as features for the model. We identified 'coin', 'symbol', and 'date' as unnecessary for our prediction.
 
 ## ⚙️ Feature Selection and Preprocessing
 
-Based on our initial data exploration and understanding of the project's goal, we made a deliberate decision to use a specific subset of features for training our model. While the original dataset contained several columns, we identified ['coin', 'symbol', 'date'] as unnecessary for our prediction task and removed them during the data cleaning phase.
+Based on our initial data exploration and understanding of the project's goal, we made a deliberate decision to use a specific subset of features for training our model. While the original dataset contained more columns, we narrowed it down to those most relevant for predicting liquidity.
 
 The features that we selected and used for training the Random Forest Regressor are:
 
@@ -73,23 +86,23 @@ The selected features (`X`) and the target variable (`y` - 'liquidity') are spli
 
 **Feature Scaling:**
 
-To ensure that features with different scales do not disproportionately influence the model, we apply `StandardScaler` to standardize the training and testing data. The fitted scaler is then saved using `pickle` for later use in making predictions on new data.
+To ensure that features with different scales do not disproportionately influence the model, we apply `StandardScaler` to standardize the training and testing data. The fitted scaler is then saved for future use.
 
 ## 🧠 Model Training - Random Forest Regressor
 
-We choose the Random Forest Regressor as our machine learning model. Random Forests are an ensemble learning method that builds multiple decision trees and merges their predictions to improve accuracy and reduce overfitting.
+We choose the Random Forest Regressor as our machine learning model. Random Forests are an ensemble learning method that builds multiple decision trees and merges their predictions to improve accuracy and control overfitting.
 
 The model is trained on the scaled training data (`X_train`, `y_train`).
 
 ## 🎯 Model Evaluation
 
-After training, we evaluate the model's performance using the R-squared metric. R-squared measures the proportion of the variance in the dependent variable (liquidity) that is predictable from the independent variables (our selected features).
+After training, we evaluate the model's performance using the R-squared metric. R-squared measures the proportion of the variance in the dependent variable (liquidity) that is predictable from the independent variables.
 
 We calculate and print the R-squared scores for both the training and test sets to assess how well the model fits the data and generalizes to unseen data.
 
 ## 🛠️ Hyperparameter Tuning with GridSearchCV
 
-To further optimize the model's performance and address potential overfitting, we perform hyperparameter tuning using `GridSearchCV`. This technique systematically searches through a predefined grid of hyperparameter values to find the combination that yields the best cross-validation score.
+To further optimize the model's performance and address potential overfitting, we perform hyperparameter tuning using `GridSearchCV`. This technique systematically searches through a predefined grid of hyperparameters to find the best combination.
 
 The `param_grid` for the `RandomForestRegressor` includes:
 
@@ -103,7 +116,7 @@ We evaluate the performance of the `best_model` on the test set and also check i
 
 ## 💾 Saving the Model and Scaler
 
-The tuned Random Forest Regressor model (`best_model`) and the fitted `StandardScaler` are saved using `pickle`. This allows us to load the trained model and scaler later to make predictions on new, unseen data without retraining.
+The tuned Random Forest Regressor model (`best_model`) and the fitted `StandardScaler` are saved using `pickle`. This allows us to load the trained model and scaler later to make predictions on new data.
 
 - `tuned_liquidity_model.pkl`: Contains the trained Random Forest Regressor model.
 - `liquidity_scaler.pkl`: Contains the fitted StandardScaler.
@@ -128,7 +141,7 @@ The function uses the loaded scaler to transform the input features and then use
 5. The notebook will perform data loading, cleaning, feature selection, scaling, model training, tuning, and saving.
 6. You can use the `predict_liquidity` function with your own input values to get predictions.
 
-## 🔮 Future Enhancements
+## 🔍 Future Enhancements
 
 - Explore other regression models (e.g., Gradient Boosting, Support Vector Regression).
 - Incorporate additional relevant features (e.g., social media sentiment, news headlines).
