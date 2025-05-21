@@ -9,18 +9,26 @@ The goal of this project is to predict the liquidity of cryptocurrencies based o
 ## Project Structure
 
 ```
-crypto-prediction/
-├── data/               # Raw and processed data files
-├── notebooks/          # Jupyter notebooks for exploration and prototyping
-├── src/                # Source code for model, training, and utilities
-│   ├── __init__.py
-│   ├── data_loader.py
-│   ├── model.py
-│   └── train.py
-├── tests/              # Unit and integration tests
-├── requirements.txt    # Python dependencies
-├── README.md           # Project overview and setup instructions
-└── .gitignore
+Cryptocurrency_prediction/
+├── DATASET/
+│   ├── cleaned_data.csv
+│   └── data_with_liquidity.csv
+├── EDA REPORT/
+│   └── EDA_Analysis-checkpoint.ipynb
+├── NORMALIZATION_&_PREDICTION/
+│   ├── Normalization_Prediction.ipynb
+│   └── featureengineering.ipynb
+├── static/
+│   └── style.css
+├── templates/
+│   └── index.html
+├── app.py
+├── liquidity_scaler.pkl
+├── tuned_liquidity_model.pkl
+├── requirements.txt
+├── README.md
+├── LICENSE
+├── venv/                  # (Python virtual environment — usually not versioned)
 ```
 
 ## 📊 Data Exploration and Cleaning (EDA)
