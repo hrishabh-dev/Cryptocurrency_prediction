@@ -12,7 +12,7 @@ The goal of this project is to predict the liquidity of cryptocurrencies based o
 
 Below is a screenshot of the web interface where users can input cryptocurrency details to get liquidity predictions:
 
-![Cryptocurrency Levels Prediction Screenshot](image1)
+![Cryptocurrency Levels Prediction Screenshot](images/ui_pic.png)
 
 ---
 
