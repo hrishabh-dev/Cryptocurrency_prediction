@@ -18,31 +18,10 @@ Below is a screenshot of the web interface where users can input cryptocurrency 
 
 ## Project Structure
 
-```
-Cryptocurrency_prediction/
-├── DATASET/
-│   ├── cleaned_data.csv
-│   └── data_with_liquidity.csv
-├── EDA REPORT/
-│   └── EDA_Analysis-checkpoint.ipynb
-├── NORMALIZATION_&_PREDICTION/
-│   ├── Normalization_Prediction.ipynb
-│   └── featureengineering.ipynb
-├── static/
-│   └── style.css
-├── templates/
-│   └── index.html
-├── app.py                      # Main Flask application
-├── liquidity_scaler.pkl        # Saved StandardScaler
-├── tuned_liquidity_model.pkl   # Saved trained model
-├── requirements.txt            # Python dependencies
-├── README.md
-├── LICENSE
-├── .gitignore                  # Ignore venv/ and other unnecessary files
-├── venv/                       # Python virtual environment (should be in .gitignore)
-```
 
----
+![Cryptocurrency Levels Prediction Screenshot](images/structure.png)
+
+
 
 ## 📊 Data Exploration and Cleaning (EDA)
 
