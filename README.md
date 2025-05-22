@@ -19,7 +19,7 @@ Below is a screenshot of the web interface where users can input cryptocurrency 
 ## Project Structure
 
 
-![Cryptocurrency Levels Prediction Screenshot](images/struct.png)
+![Cryptocurrency Levels Prediction Screenshot](images/projectst.png)
 
 
 
