@@ -48,7 +48,7 @@ def predict():
 
         # Make prediction
         predicted_liquidity = loaded_model.predict(scaled_input)[0]
-        liquidity_level = "High" if predicted_liquidity >= 0.5 else "Low"
+        liquidity_level = "High" if predicted_liquidity >= 0.3 else "Low"
 
         return render_template(
             "index.html",
