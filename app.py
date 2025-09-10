@@ -48,7 +48,14 @@ def predict():
 
         # Make prediction
         predicted_liquidity = loaded_model.predict(scaled_input)[0]
-        liquidity_level = "High" if predicted_liquidity >= 0.3 else "Low"
+        if predicted_liquidity < 0.03:
+            liquidity_level = "Very Low"
+        elif predicted_liquidity < 0.07:
+            liquidity_level = "Low"
+        elif predicted_liquidity < 0.11:
+            liquidity_level = "Medium"
+        else:
+            liquidity_level = "High"
 
         return render_template(
             "index.html",
@@ -58,8 +65,41 @@ def predict():
     else:
         return render_template("index.html")
 
+@app.route('/predict_api', methods=["POST"])
+def predict_api():
+    data = request.get_json()
 
+    volume = float(data['24h_volume'])
+    mkt_cap = float(data['mkt_cap'])
+    h1 = float(data['1h'])
+    price = float(data['price'])
 
+    input_dict = {
+        '24h_volume': volume,
+        'mkt_cap': mkt_cap,
+        '1h': h1,
+        'price': price
+    }
+    input_df = pd.DataFrame([input_dict])
+
+    scaler_features = scaler.feature_names_in_
+    input_df_scaled = input_df[scaler_features]
+
+    scaled_input = scaler.transform(input_df_scaled)
+    predicted_liquidity = loaded_model.predict(scaled_input)[0]
+    if predicted_liquidity < 0.03:
+        liquidity_level = "Very Low"
+    elif predicted_liquidity < 0.07:
+        liquidity_level = "Low"
+    elif predicted_liquidity < 0.11:
+        liquidity_level = "Medium"
+    else:
+        liquidity_level = "High"
+
+    return jsonify({
+        "predicted_liquidity": float(predicted_liquidity),
+        "liquidity_level": liquidity_level
+    })
 
 
 
